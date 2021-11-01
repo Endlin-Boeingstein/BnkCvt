@@ -16,6 +16,12 @@ class BKHDdatOverrider
         {
             //得到预置的和exe同文件夹的BKHD.dat的路径
             FileInfo fi = new FileInfo(System.Environment.CurrentDirectory+"\\BKHD.dat");
+            //判定根目录读取函数是否生效，否则换第二条函数
+            if (!fi.Exists)
+            {
+                //得到预置的和exe同文件夹的BKHD.dat的路径
+                fi = new FileInfo(AppDomain.CurrentDomain.BaseDirectory + "BKHD.dat");
+            }
             //判断文件是否缺失
             if (fi.Exists)
             {
